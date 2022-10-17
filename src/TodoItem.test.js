@@ -27,4 +27,17 @@ describe('<TodoItem />', () => {
         expect(span).toBeTruthy();   //span이 있냐
         expect(button).toBeTruthy(); //버튼이 있냐 
     });
+
+    //done한 할일 줄긋기 - 줄긋는 효과 속성이 있으면 true
+    it('shows line-through on span when done is true', () => {
+        const{span} = setup({todo: {...sampleTodo, done: true } });
+        expect(span).toHaveStyle('text-decoration: line-through;');
+    });
+    it('shows line-through on span when done is false', () => {
+        const{span} = setup({todo: {...sampleTodo, done: false } });
+        expect(span).not.toHaveStyle('text-decoration: line-through;');
+    });
+
+
+
 });
