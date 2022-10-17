@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 
-const TodoForm = () => {
+const TodoForm = ({onInsert}) => {
+    const [value, setValue] = useState('');
+    const onChange = useCallback(e => {
+        setValue(e.target.value);
+        //console.log(value);
+    }, []);
+    const onSubmit = useCallback( e => {
+        onInsert(value);
+        setValue('');
+        e.preventDefault(); //새로고침 방지
+    }, [onInsert, value]);
     return(<div>
-       <form>
-            <input placeholder="할 일을 입력하세요 " />
+       <form onSubmit={onSubmit}>
+                {/* 이벤트 이름 = {함수이름} */}
+            <input value = {value} onChange={onChange} placeholder="할 일을 입력하세요 " />
             <button type="submit">등록</button>
         </form>
     </div>);
