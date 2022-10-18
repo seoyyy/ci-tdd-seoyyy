@@ -2,11 +2,14 @@ import React from "react";
 import TodoItem from "./TodoItem";
 
 
-const TodoList = ({todos}) => {
+                //props로 받아주기
+const TodoList = ({todos, onToggle, onRemove}) => {
     return (
     <ul>
         {todos.map(todo => (
-            <TodoItem todo={todo} key={todo.id} />   //넣어논 todos만큼 처리될거임
+            <TodoItem todo={todo} key={todo.id}
+            onToggle={onToggle} onRemove={onRemove} />   //넣어논 todos만큼 처리될거임
+            //onToggle이라는 pros에 넘어온 onToggle넘겨주기
         ))}
     </ul>
     );
