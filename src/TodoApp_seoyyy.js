@@ -29,9 +29,15 @@ const TodoApp_seoyyy = () => {
         );
         nextId.current += 1;
     }, [todos]);
+    const onToggle = useCallback(id => {
+        //데이터 세팅
+        setTodos(
+            todos.map(todo => todo.id === id ? {...todo, done: !todo.done} : todo)
+        );
+    },[todos]);
     return (<div>
         <TodoForm onInsert={onInsert}/>
-        <TodoList todos={todos} />
+        <TodoList todos={todos} onToggle={onToggle}/>
     </div>);
 };
 

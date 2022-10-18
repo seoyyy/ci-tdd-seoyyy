@@ -1,5 +1,5 @@
 import React from "react";
-import {render, fireEvent} from '@testing-library/react';
+import {render, fireEvent, getByText} from '@testing-library/react';
 import TodoApp_seoyyy from "./TodoApp_seoyyy";
 
 describe('<TodoApp_seoyyy />', () => {
@@ -23,4 +23,13 @@ describe('<TodoApp_seoyyy />', () => {
         fireEvent.click(getByText('등록'));
         getByText('새 항목 추가하기');
     });
+    it('toggles todo', ()=> {
+        const {getByText} =render(<TodoApp_seoyyy />);
+        const todoText = getByText('TDD 배우기');
+        expect(todoText).not.toHaveStyle('text-decoration: line-through;');
+        fireEvent.click(todoText);
+        expect(todoText).toHaveStyle('text-decoration: line-through;');
+    });
+
+
 });
