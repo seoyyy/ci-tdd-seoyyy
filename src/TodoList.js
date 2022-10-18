@@ -5,7 +5,7 @@ import TodoItem from "./TodoItem";
                 //props로 받아주기
 const TodoList = ({todos, onToggle, onRemove}) => {
     return (
-    <ul>
+    <ul data-testid="TodoList">
         {todos.map(todo => (
             <TodoItem todo={todo} key={todo.id}
             onToggle={onToggle} onRemove={onRemove} />   //넣어논 todos만큼 처리될거임
