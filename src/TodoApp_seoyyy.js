@@ -35,9 +35,17 @@ const TodoApp_seoyyy = () => {
             todos.map(todo => todo.id === id ? {...todo, done: !todo.done} : todo)
         );
     },[todos]);
+
+    //onRemove에 대한작업
+    const onRemove = useCallback(id => {
+        setTodos(
+            todos.filter(todo => todo.id !== id) // 같지 않은것들을 빼는 -filter
+        );
+    },[todos]);
+
     return (<div>
         <TodoForm onInsert={onInsert}/>
-        <TodoList todos={todos} onToggle={onToggle}/>
+        <TodoList todos={todos} onToggle={onToggle} onRemove ={onRemove} />
     </div>);
 };
 

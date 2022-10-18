@@ -31,5 +31,12 @@ describe('<TodoApp_seoyyy />', () => {
         expect(todoText).toHaveStyle('text-decoration: line-through;');
     });
 
-
+    it('remove todo', () => {
+        const {getByText} = render(<TodoApp_seoyyy />);
+        const todoText =getByText('TDD 배우기');
+        const removeButton = todoText.nextSibling;
+        fireEvent.click(removeButton);
+        //TDD배우기 글씨 화면에 없는거 테스트
+        expect(todoText).not.toBeInTheDocument();
+    });
 });
