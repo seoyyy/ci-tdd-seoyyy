@@ -6,7 +6,6 @@ import TodoApp_seoyyy from './TodoApp_seoyyy';
 function App() {
   return (
     <div className='App'>
-          <TodoApp_boya />
           Learn React
         
     </div>
